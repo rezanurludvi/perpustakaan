@@ -14,6 +14,6 @@ public class BookService extends BaseService<Book> {
 
     @Override
     protected BaseDAO<Book> getDAO() {
-        return null;
+        return dao;
     }
 }
