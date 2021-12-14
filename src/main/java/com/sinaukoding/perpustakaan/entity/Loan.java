@@ -14,7 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class Loan extends BaseEntity<Loan>{
 
-    private static final long serialVersionUID = 7828181831849857943L;
+
+    private static final long serialVersionUID = -9111725713247320880L;
 
     public enum StatusLoan{
         BORROWED,
@@ -22,13 +23,13 @@ public class Loan extends BaseEntity<Loan>{
     }
 
     @Column(name = "type_identity")
-    private String type_identity;
+    private String typeIdentity;
 
     @Column(name = "number_identity")
-    private String number_identity;
+    private String numberIdentity;
 
     @Column(name = "duration")
-    private String duration;
+    private Integer duration;
 
     @Column(name = "loan_date")
     @Temporal(TemporalType.DATE)
@@ -36,7 +37,7 @@ public class Loan extends BaseEntity<Loan>{
 
     @Column(name = "return_date")
     @Temporal(TemporalType.DATE)
-    private Date return_date;
+    private Date returnDate;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -47,6 +48,6 @@ public class Loan extends BaseEntity<Loan>{
     private Book book;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "User_id")
+    @JoinColumn(name = "user_id")
     private User user;
 }

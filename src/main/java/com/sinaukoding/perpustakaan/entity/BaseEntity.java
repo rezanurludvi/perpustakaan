@@ -1,12 +1,12 @@
 package com.sinaukoding.perpustakaan.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,7 +18,8 @@ import java.util.Date;
 @SuppressWarnings("unchecked")
 public abstract class BaseEntity<T> implements Serializable {
 
-    private static final long serialVersionUID = -1477876135846170795L;
+    @Serial
+    private static final long serialVersionUID = 5522962771614054312L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

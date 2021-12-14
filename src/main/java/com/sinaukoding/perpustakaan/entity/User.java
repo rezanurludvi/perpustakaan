@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 public class User extends BaseEntity<User> {
+
 
     private static final long serialVersionUID = -3460612085700139400L;
 
@@ -24,7 +27,7 @@ public class User extends BaseEntity<User> {
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_USER;
 
-    @Column(name = "profile_name", columnDefinition = "VARCHAR(100)")
+    @Column(name = "profile_name", columnDefinition = "VARCHAR(100)", nullable = false)
     private String profileName;
 
     @Column(name = "username", columnDefinition = "VARCHAR(50)", nullable = false)
