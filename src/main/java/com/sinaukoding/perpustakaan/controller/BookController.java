@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("/books")
 @PreAuthorize("permitAll()")
 public class BookController extends BaseController {
-
     @Autowired
     private BookService service;
 
+    @PreAuthorize("permitAll()")
     @GetMapping
     public RestResult get(@RequestParam(value = "param", required = false) String param,
                           @RequestParam(value = "offset") int offset,
@@ -28,9 +28,10 @@ public class BookController extends BaseController {
 
         long rows = service.count(book);
 
-        return new RestResult(rows > 0 ? service.find(book, offset, limit) : new ArrayList<>());
+        return new RestResult(rows > 0 ? service.find(book, offset, limit) : new ArrayList<>(), rows);
     }
 
+    @PreAuthorize("permitAll()")
     @PostMapping
     public RestResult save(@RequestBody Book param){
         param = service.save(param);
@@ -45,6 +46,7 @@ public class BookController extends BaseController {
         return new RestResult(book, book != null ? StatusCode.UPDATE_SUCCESS : StatusCode.UPDATE_FAILED);
     }
 
+    @PreAuthorize("permitAll()")
     @DeleteMapping(value = "{id}")
     public RestResult delete(@PathVariable Long id){
         return new RestResult(service.delete(id) ? StatusCode.DELETE_SUCCESS : StatusCode.DELETE_FAILED);
