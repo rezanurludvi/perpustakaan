@@ -14,9 +14,15 @@ public class LoanDAO extends BaseDAO<Loan>{
     public List<Predicate> predicates(Loan param, CriteriaBuilder builder, Root<Loan> root, boolean isCount) {
         List<Predicate> predicates = super.predicates(param, builder, root, isCount);
 
-//        if (isCount){
-//            root.fetch("book", JoinType.INNER);
-//        }
+        if (param != null){
+            if (param.getStatus() != null){
+                predicates.add(builder.equal(root.get("status"), param.getStatus()));
+            }
+        }
+
+        if (isCount){
+            root.fetch("book", JoinType.INNER);
+        }
 
         return predicates;
     }
@@ -29,7 +35,7 @@ public class LoanDAO extends BaseDAO<Loan>{
         Root<Loan> root = query.from(Loan.class);
 
         if (param != null){
-            if(param.getUser() != null){
+            if (param.getUser() != null){
                 query.where(builder.equal(root.get("user").get("id"), param.getUser().getId()));
             }
         }

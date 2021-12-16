@@ -35,8 +35,8 @@ public class LoanController extends BaseController {
     @PreAuthorize("permitAll()")
     @GetMapping(value = "by-date")
     public RestResult findByDate(@RequestParam(value = "param", required = false) String param,
-                                  @RequestParam(value = "start-date") String startDate,
-                                  @RequestParam(value = "end-date") String endDate) throws JsonProcessingException {
+                                 @RequestParam(value = "start-date") String startDate,
+                                 @RequestParam(value = "end-date") String endDate) throws JsonProcessingException {
 
         RestResult result = new RestResult(StatusCode.OPERATION_FAILED);
 
