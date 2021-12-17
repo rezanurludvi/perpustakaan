@@ -20,7 +20,7 @@ public class LoanDAO extends BaseDAO<Loan>{
             }
         }
 
-        if (isCount){
+        if (!isCount){
             root.fetch("book", JoinType.INNER);
         }
 

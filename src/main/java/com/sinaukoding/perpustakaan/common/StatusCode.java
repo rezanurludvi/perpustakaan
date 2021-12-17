@@ -11,4 +11,8 @@ public interface StatusCode {
 
     String OPERATION_SUCCESS = "200";
     String OPERATION_FAILED = "400";
+
+    String PASSWORD_OR_USER_NOT_REGISTERED = "415";
+    String LOGIN_SUCCESS = "211";
+    String LOGIN_FAILED = "212";
 }
